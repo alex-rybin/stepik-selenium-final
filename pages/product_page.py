@@ -28,3 +28,13 @@ class ProductPage(BasePage):
         assert product_price_on_page == product_price_in_message, (
             'Product price is not same in \"cart total\" message'
         )
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADDED_TO_CART_MESSAGE), (
+            'Add to cart successful message is present, but should not be'
+        )
+
+    def success_message_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.ADDED_TO_CART_MESSAGE), (
+            'Add to cart successful message has not disappeared'
+        )
